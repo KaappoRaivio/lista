@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
 public class NewList extends AppCompatActivity {
 
     private ShoppingListItemAdapter adapter;
@@ -29,5 +31,16 @@ public class NewList extends AppCompatActivity {
     public void newItem (View v) {
         adapter.items.add(new ShoppingListItem("", "", ""));
         adapter.notifyDataSetChanged();
+        serialize();
+    }
+
+    public void serialize () {
+        ShoppingList test = ShoppingList.getExampleList();
+        Gson gson = new Gson();
+        String json = gson.toJson(test);
+
+        System.out.println(json);
+        System.out.println(test.getID());
+        System.out.println(gson.fromJson(json, ShoppingList.class).getID());
     }
 }
