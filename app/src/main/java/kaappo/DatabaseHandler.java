@@ -3,6 +3,8 @@ package kaappo;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.google.gson.Gson;
+
 import kaappo.lista.ShoppingList;
 
 public class DatabaseHandler {
@@ -22,6 +24,20 @@ public class DatabaseHandler {
     }
 
     public boolean saveShoppingList (ShoppingList shoppingList) {
+        Gson gson = new Gson();
+        String json = gson.toJson(shoppingList);
+
+
+        db.execSQL("INSERT INTO " + getName() + " VALUES('"
+                + shoppingList.getName() + "', '"
+                + json + "', '"
+                + System.currentTimeMillis() + "', '"
+                + shoppingList.getID() + "');");
+
+        return true;
+    }
+
+    public ShoppingList openShoppingListByID (int ID) {
         
     }
 
