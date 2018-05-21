@@ -10,6 +10,7 @@ public class ShoppingList {
     private List<ShoppingListItem> items;
     private int ID;
     private String name;
+    private long timeCreated;
 
 
     public ShoppingList(String name, List<ShoppingListItem> items) {
@@ -17,6 +18,7 @@ public class ShoppingList {
             this.items = items;
             this.ID = getFreeID();
             this.name = name;
+            this.timeCreated = System.currentTimeMillis();
         }
     }
 
@@ -62,4 +64,7 @@ public class ShoppingList {
         return new ShoppingList("Kauppalista", items);
     }
 
+    public long getTimeCreated() {
+        return timeCreated;
+    }
 }

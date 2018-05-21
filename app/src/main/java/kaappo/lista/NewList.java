@@ -1,5 +1,6 @@
 package kaappo.lista;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,8 @@ import java.util.List;
 public class NewList extends AppCompatActivity {
 
     private ShoppingListItemAdapter adapter;
+    private DatabaseHandler shoppingListDatabaseHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,9 @@ public class NewList extends AppCompatActivity {
         RecyclerView rv = findViewById(R.id.items);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
+
+        shoppingListDatabaseHandler = new DatabaseHandler("shoppinglists", this);
+        shoppingListDatabaseHandler.createDatabase();
     }
 
     public void newItem (View v) {
@@ -54,8 +60,15 @@ public class NewList extends AppCompatActivity {
         return new ShoppingList(title, kamat);
     }
 
-    public boolean saveShoppingList (View v) {
-        
+    public void saveShoppingList (View v) {
+        ShoppingList shoppingList = getShoppingListInformationFromLayout();
+        getShoppingListDatabaseHandler().saveShoppingList(shoppingList);
+
+        startActivity(new Intent(this, MainActivity.class));
+
     }
 
+    public DatabaseHandler getShoppingListDatabaseHandler() {
+        return shoppingListDatabaseHandler;
+    }
 }
