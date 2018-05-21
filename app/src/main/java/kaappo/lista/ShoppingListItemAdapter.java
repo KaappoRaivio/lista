@@ -24,7 +24,7 @@ public class ShoppingListItemAdapter extends RecyclerView.Adapter<ShoppingListIt
 
     @Override
     public void onBindViewHolder (ShoppingListItemViewHolder vh, int position) {
-        ShoppingListItem current = this.items.get(position);
+        ShoppingListItem current = this.getItems().get(position);
 
         vh.amount.setText(current.getAmount());
         vh.group.setText(current.getGroup());
@@ -34,7 +34,10 @@ public class ShoppingListItemAdapter extends RecyclerView.Adapter<ShoppingListIt
 
     @Override
     public int getItemCount() {
-        return this.items.size();
+        return this.getItems().size();
     }
 
+    public List<ShoppingListItem> getItems() {
+        return items;
+    }
 }

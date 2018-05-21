@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 
+import java.util.List;
+
 public class NewList extends AppCompatActivity {
 
     private ShoppingListItemAdapter adapter;
@@ -43,4 +45,17 @@ public class NewList extends AppCompatActivity {
         System.out.println(test.getID());
         System.out.println(gson.fromJson(json, ShoppingList.class).getID());
     }
+
+    private ShoppingList getShoppingListInformationFromLayout () {
+        List<ShoppingListItem> kamat = adapter.getItems();
+        EditText editText = (EditText) findViewById(R.id.title);
+        String title = editText.getText().toString();
+
+        return new ShoppingList(title, kamat);
+    }
+
+    public boolean saveShoppingList (View v) {
+        
+    }
+
 }

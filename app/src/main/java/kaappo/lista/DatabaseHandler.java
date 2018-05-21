@@ -1,9 +1,13 @@
-package kaappo;
+package kaappo.lista;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import kaappo.lista.ShoppingList;
 
@@ -38,7 +42,33 @@ public class DatabaseHandler {
     }
 
     public ShoppingList openShoppingListByID (int ID) {
-        
+        Cursor resultSet = db.rawQuery("SELECT * FROM " + getName() + "WHERE ID = '" + ID + "';", null);
+
+        resultSet.moveToFirst();
+        String json = resultSet.getString(resultSet.getColumnIndexOrThrow("json"));
+        resultSet.close();
+
+        Gson gson = new Gson();
+        return  gson.fromJson(json, ShoppingList.class);
+    }
+
+    public List<ShoppingList> getAllShoppingLists () {
+        List<ShoppingList> listat = new ArrayList<>();
+
+        Cursor resultSet = db.rawQuery("SELECT * FROM'" + getName() + "';", null);
+        resultSet.moveToFirst();
+
+        Gson gson = new Gson();
+
+        while (resultSet.moveToNext()) {
+            String json = resultSet.getString(resultSet.getColumnIndexOrThrow("json"));
+            listat.add(gson.fromJson(json, ShoppingList.class));
+
+        }
+
+        resultSet.close();
+
+        return listat;
     }
 
 
