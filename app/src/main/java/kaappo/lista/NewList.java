@@ -68,6 +68,12 @@ public class NewList extends AppCompatActivity {
 
     }
 
+    public void deleteItemFromShoppingList (View v) {
+        int position = (Integer) v.getTag();
+        adapter.items.remove(position);
+        adapter.notifyItemRemoved(position);
+    }
+
     public DatabaseHandler getShoppingListDatabaseHandler() {
         return shoppingListDatabaseHandler;
     }

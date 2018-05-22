@@ -30,6 +30,23 @@ public class ShoppingListItemAdapter extends RecyclerView.Adapter<ShoppingListIt
         vh.group.setText(current.getGroup());
         vh.name.setText(current.getName());
         vh.checked.setChecked(current.isCollected());
+        vh.delete.setTag(position);
+        vh.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteItemFromShoppingList(v);
+            }
+        });
+
+    }
+
+    private void deleteItemFromShoppingList (View v) {
+        int position = (Integer) v.getTag();
+        this.items.remove(position);
+
+        this.notifyItemRemoved(position);
+        this.notifyItemRangeChanged(position, this.items.size());
+
     }
 
     @Override

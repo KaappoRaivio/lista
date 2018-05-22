@@ -2,6 +2,7 @@
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/entry_height">
 
@@ -77,14 +78,29 @@
     <CheckBox
         android:layout_margin="@dimen/padding"
         android:id="@+id/check"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/divider_2"
-        android:layout_toEndOf="@id/divider_2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/delete"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
         android:text="@null"/>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/delete"
+        android:contentDescription="@string/delete"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"
+
+        app:srcCompat="@drawable/delete"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:layout_alignParentEnd="true"
+        />
 
     <EditText
         android:id="@+id/group"
