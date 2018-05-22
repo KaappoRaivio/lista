@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.entries.remove(pos);
         adapter.notifyItemRemoved(pos);
+        adapter.notifyItemRangeChanged(pos, adapter.entries.size());
     }
 
     public void toasti(String message) {
