@@ -45,5 +45,6 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListViewHo
         slvh.edit.setTag(current.getID());
         slvh.delete.setTag(bundle);
         slvh.card.getLayoutParams().height = WRAP_CONTENT;
+        slvh.card.setTag(bundle);
     }
 }

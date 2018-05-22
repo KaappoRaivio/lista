@@ -42,6 +42,8 @@ public class DatabaseHandler {
         Gson gson = new Gson();
         String json = gson.toJson(shoppingList);
 
+        deleteShoppingListByID(shoppingList.getID());
+
 
         db.execSQL("INSERT INTO " + getName() + " VALUES('"
                 + shoppingList.getName() + "', '"
@@ -54,7 +56,7 @@ public class DatabaseHandler {
     }
 
     public ShoppingList openShoppingListByID (int ID) {
-        Cursor resultSet = db.rawQuery("SELECT * FROM " + getName() + "WHERE ID = '" + ID + "';", null);
+        Cursor resultSet = db.rawQuery("SELECT * FROM " + getName() + " WHERE ID = '" + ID + "';", null);
 
         resultSet.moveToFirst();
         String json = resultSet.getString(resultSet.getColumnIndexOrThrow("json"));
@@ -74,7 +76,10 @@ public class DatabaseHandler {
 
         while (resultSet.moveToNext()) {
             String json = resultSet.getString(resultSet.getColumnIndexOrThrow("json"));
-            listat.add(gson.fromJson(json, ShoppingList.class));
+            ShoppingList muppet = gson.fromJson(json, ShoppingList.class);
+            //ID
+            //ShoppingList temp = new ShoppingList(muppet.getName(), muppet.getItems());
+            listat.add(muppet);
 
         }
 

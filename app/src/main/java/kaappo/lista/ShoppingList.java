@@ -19,6 +19,8 @@ public class ShoppingList {
             this.ID = getFreeID();
             this.name = name;
             this.timeCreated = System.currentTimeMillis();
+
+            ShoppingList.lists.add(this);
         }
     }
 
@@ -35,7 +37,7 @@ public class ShoppingList {
                 freeID = i.getID();
             }
         }
-
+        System.out.println("Lists" + ShoppingList.lists.toString());
         return freeID + 1;
     }
 

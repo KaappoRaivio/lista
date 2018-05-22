@@ -52,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyItemRangeChanged(pos, adapter.entries.size());
     }
 
+    public void EditShoppingList (View v) {
+        int ID = (Integer) v.getTag();
+
+        Intent intent = new Intent(this, EditShoppingList.class);
+        intent.putExtra("ID", ID);
+        startActivity(intent);
+
+    }
+
     public void toasti(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }

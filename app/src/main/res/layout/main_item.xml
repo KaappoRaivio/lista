@@ -83,7 +83,8 @@
 
                 android:layout_toStartOf="@id/ImageButton01"
                 android:layout_alignParentTop="true"
-                style="@style/Widget.AppCompat.Button.Borderless"/>
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:onClick="EditShoppingList"/>
 
 
         </RelativeLayout>

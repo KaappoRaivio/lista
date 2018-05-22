@@ -4,6 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditShoppingList">
+    tools:context=".NewList">
+
+    <RelativeLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="263dp">
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_padding"
+            android:hint="@string/type_here"
+            android:inputType="text"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/save_list"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/ic_save"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="16dp"
+            android:tint="@android:color/white"
+            android:theme="@style/MyFloatingButton"
+            android:onClick="saveShoppingList"
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:tint="@android:color/white"
+            android:theme="@style/MyFloatingButton"
+            android:id="@+id/new_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_add"
+            android:layout_toStartOf="@id/save_list"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="newItem"
+
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/title"
+            android:layout_margin="@dimen/default_padding"
+            >
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </RelativeLayout>
+
+
+
+
 
 </android.support.constraint.ConstraintLayout>
