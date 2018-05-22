@@ -18,7 +18,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"
-        android:onClick="createNew"/>
+        android:onClick="createNew"
+        android:tint="@android:color/white"
+        android:theme="@style/MyFloatingButton"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lists"
