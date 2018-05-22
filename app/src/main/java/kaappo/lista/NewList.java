@@ -15,7 +15,6 @@ import java.util.List;
 public class NewList extends AppCompatActivity {
 
     private ShoppingListItemAdapter adapter;
-    private DatabaseHandler shoppingListDatabaseHandler;
 
 
     @Override
@@ -32,8 +31,7 @@ public class NewList extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
 
-        shoppingListDatabaseHandler = DatabaseHandler.getInstances().get(0);
-        shoppingListDatabaseHandler.createDatabase();
+
     }
 
     public void newItem (View v) {
@@ -54,19 +52,11 @@ public class NewList extends AppCompatActivity {
 
     public void saveShoppingList (View v) {
         ShoppingList shoppingList = getShoppingListInformationFromLayout();
-        getShoppingListDatabaseHandler().saveShoppingList(shoppingList);
+        DatabaseHandler.getInstances().get(0).saveShoppingList(shoppingList);
 
         startActivity(new Intent(this, MainActivity.class));
 
     }
 
-    public void deleteItemFromShoppingList (View v) {
-        int position = (Integer) v.getTag();
-        adapter.items.remove(position);
-        adapter.notifyItemRemoved(position);
-    }
 
-    public DatabaseHandler getShoppingListDatabaseHandler() {
-        return shoppingListDatabaseHandler;
-    }
 }
