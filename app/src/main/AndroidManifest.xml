@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewList" />
-        <activity android:name=".EditShoppingList"></activity>
+        <activity android:name=".EditShoppingList" />
+        <activity android:name=".SelectShop"></activity>
     </application>
 
 </manifest>
