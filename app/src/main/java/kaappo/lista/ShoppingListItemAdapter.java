@@ -1,5 +1,6 @@
 package kaappo.lista;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,6 @@ public class ShoppingListItemAdapter extends RecyclerView.Adapter<ShoppingListIt
         ShoppingListItem current = this.getItems().get(position);
 
         vh.amount.setText(current.getAmount());
-        vh.group.setText(current.getGroup());
         vh.name.setText(current.getName());
         vh.checked.setChecked(current.isCollected());
         vh.delete.setTag(position);

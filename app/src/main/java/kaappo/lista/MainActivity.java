@@ -9,7 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
+
+    private static ArrayList<String> PRODUCT_CATEGORIES = new ArrayList();
 
     ShoppingListAdapter adapter;
 
@@ -19,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PRODUCT_CATEGORIES.addAll(Arrays.asList(getResources().getStringArray(R.array.categories)));
 
 
         DatabaseHandler databaseHandler = new DatabaseHandler("shoppinglists", this);
@@ -65,4 +72,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
+    public static ArrayList<String> getProductCategories() {
+        return PRODUCT_CATEGORIES;
+    }
 }
